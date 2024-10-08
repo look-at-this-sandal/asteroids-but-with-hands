@@ -1,6 +1,11 @@
-extends Area2D
+class_name Asteroid extends Area2D
+
+enum State{FLOATING, GRABBED, THROWN}
+
+signal exploded(pos, size)
 
 var movement_vector := Vector2(0,-1)
+var state = State.FLOATING
 
 enum AsteroidSize{LARGE, MEDIUM, SMALL}
 @export var size := AsteroidSize.LARGE
@@ -33,10 +38,12 @@ func _ready():
 func _physics_process(delta):
 	global_position += movement_vector.rotated(rotation) * speed * delta
 
-	if grabbed == true && size != AsteroidSize.LARGE:
+	if grabbed == true && size != AsteroidSize.LARGE && state == State.FLOATING:
+		state = State.GRABBED
 		self.position = get_node(".../Player").global_position
 	elif grabbed == true && size == AsteroidSize.LARGE:
 		print("Can't be grabbed!")
+		grabbed = false
 	
 	
 
@@ -45,3 +52,19 @@ func _physics_process(delta):
 	var radius = cshape.shape.radius
 	global_position.x = wrapf(global_position.x,0-radius,screen_size.x+radius)
 	global_position.y = wrapf(global_position.y,0-radius,screen_size.y+radius)
+
+## grabbed
+func grabinput():
+	if Input.is_action_just_pressed("grab_throw"):
+		var bodies = cshape.get_overlapping_bodies()
+		print(bodies)
+		for body in bodies:
+			if body.name == "Player" && get_node("../Player").cangrab == true:
+				grabbed = true
+				get_node("../Player").cangrab == false
+				print("Asteroid grabbed...")
+
+## explode
+func explode():
+	emit_signal("exploded", global_position, size)
+	queue_free()

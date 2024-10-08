@@ -1,5 +1,5 @@
-2024-10-08 - 4 hr: resumed work after life factors interfered AGAIN
-= BLOCK 1 (pre-class work)
+2024-10-08 - 4 hr: resumed work after life factors interfered AGAIN. i'll be working more on nailing things down tomorrow
+= BLOCK 1 (pre-class work, 2 hours)
 - referenced [youtube tutorial by 'Kaan Alpar'](https://www.youtube.com/watch?v=ELrMMv7D1wM) to further develop asteroid gimmick code
 - established claw scene, got to work with coding the grabbing function based on [tutorial by Jean Makes Games](https://www.youtube.com/watch?v=D4mVVx4njno)
 - fully implemented reset scene function for testing purposes
@@ -7,6 +7,14 @@
 - added temporary code to have medium and small asteroids have their positions set to the player ship's position when grabbed
 - got to work with initial variables and work-in-progress state machine for claw (printing to console to determine when the state is switched)
 - re-uploaded build to itch.io to reflect the version of the project at the end of this block
+= BLOCK 2 (during and after class work)
+- began work on coding in asteroid explosions based on above tutorial. functions and signals defined for the process
+- created timer child node of the claw to handle transition between states.
+- removed the claw and the nodes associated with it for the time being
+- added muzzle node to the player ship for future use with grabbed asteroids
+- looking into working with raycasts to use the grabbing function, created a raycast2d node for the player ship node referencing [youtube tutorial](https://www.youtube.com/watch?v=adsQFchiOmw) and godot documentation
+- stopped work early to do peer review
+
 
 2024-10-01 - 3.5 hr: got back to work on project after other personal life factors got in way
 - referenced [youtube tutorial by 'Kaan Alpar'](https://www.youtube.com/watch?v=zDpZ52Ulywg) to add movement for the player ship (controlled with arrow keys AND gamepad)

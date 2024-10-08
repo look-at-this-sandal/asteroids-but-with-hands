@@ -16,3 +16,10 @@ texture = ExtResource("1_r82rf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6mo68")
 debug_color = Color(0.934631, 1.74233e-05, 0.639752, 0.42)
+
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+exclude_parent = false
+target_position = Vector2(0, -70)

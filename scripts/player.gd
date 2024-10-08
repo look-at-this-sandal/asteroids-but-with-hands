@@ -1,9 +1,17 @@
 extends CharacterBody2D
 
-## movement
+## variable setup
+
+var cangrab = true
+
 @export var acceleration := 14.0
 @export var max_speed := 300
 @export var turn_speed := 200.0
+
+@onready var muzzle = $Muzzle
+@onready var claw_scene = preload("res://scenes/claw.tscn")
+
+
 
 func _process(delta):
 	pass
