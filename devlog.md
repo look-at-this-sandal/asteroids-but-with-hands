@@ -1,3 +1,13 @@
+2024-10-08 - 4 hr: resumed work after life factors interfered AGAIN
+= BLOCK 1 (pre-class work)
+- referenced [youtube tutorial by 'Kaan Alpar'](https://www.youtube.com/watch?v=ELrMMv7D1wM) to further develop asteroid gimmick code
+- established claw scene, got to work with coding the grabbing function based on [tutorial by Jean Makes Games](https://www.youtube.com/watch?v=D4mVVx4njno)
+- fully implemented reset scene function for testing purposes
+- added temporary code to ensure big asteroids cannot be grabbed
+- added temporary code to have medium and small asteroids have their positions set to the player ship's position when grabbed
+- got to work with initial variables and work-in-progress state machine for claw (printing to console to determine when the state is switched)
+- re-uploaded build to itch.io to reflect the version of the project at the end of this block
+
 2024-10-01 - 3.5 hr: got back to work on project after other personal life factors got in way
 - referenced [youtube tutorial by 'Kaan Alpar'](https://www.youtube.com/watch?v=zDpZ52Ulywg) to add movement for the player ship (controlled with arrow keys AND gamepad)
 - imported temporary spaceship sprite and claw sprite assets made myself

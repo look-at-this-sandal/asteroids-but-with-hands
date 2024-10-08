@@ -5,6 +5,9 @@ extends CharacterBody2D
 @export var max_speed := 300
 @export var turn_speed := 200.0
 
+func _process(delta):
+	pass
+
 func _physics_process(delta):
 	
 	var input_vector := Vector2(0, Input.get_axis("move_forward", "move_backward"))
@@ -28,3 +31,4 @@ func _physics_process(delta):
 	# when re-using these for the asteroid screen loop, make sure to call the shape's radius instead of height
 	global_position.x = wrapf(global_position.x,0-height,screen_size.x+(height/2))
 	global_position.y = wrapf(global_position.y,0-height,screen_size.y+(height/2))
+	
