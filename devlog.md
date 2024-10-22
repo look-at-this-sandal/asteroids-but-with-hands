@@ -1,3 +1,26 @@
+2024-10-22 - 4 hr: resumed work after life factors strike again, will work again another day this week to make up for lost time
+= pre-class work
+- began writing code to check if newly added raycast to player ship is colliding with asteroids (was successful)
+- began reworking grab function, got asteroid to follow player position when grabbed and specified that large asteroids cannot be grabbed
+- started developing state machine with the meteor to define what each state does
+- added a cooldown timer to the player's grab function to ensure that players cannot spam the grab function
+- defined the maximum speed for each asteroid size, and got transitions between states working 
+- added functioning lerp to asteroid when re-entering floating state
+- picking up and throwing is NOW (mostly) COMPLETE, what remains is making the thrown asteroids destroy floating ones
+- making note: figure out how to ensure only one asteroid can be grabbed at a time, ask prof for help later in the week
+- re-exported for HTML5 on itch.io
+
+= during and post-class work
+- engaged in playtesting
+-
+-
+-
+-
+-
+-
+-
+-
+
 2024-10-08 - 4 hr: resumed work after life factors interfered AGAIN. i'll be working more on nailing things down tomorrow
 = BLOCK 1 (pre-class work, 2 hours)
 - referenced [youtube tutorial by 'Kaan Alpar'](https://www.youtube.com/watch?v=ELrMMv7D1wM) to further develop asteroid gimmick code

@@ -5,6 +5,8 @@
 [ext_resource type="Shape2D" uid="uid://dp85tjabhavsi" path="res://resources/asteroid_cshape_small.tres" id="3_nadof"]
 
 [node name="Asteroid" type="Area2D"]
+collision_layer = 5
+collision_mask = 15
 script = ExtResource("1_rmmd0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -12,3 +14,5 @@ texture = ExtResource("2_nqmdx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = ExtResource("3_nadof")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

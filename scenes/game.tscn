@@ -9,34 +9,31 @@ position = Vector2(592, 330)
 script = ExtResource("1_28ie5")
 
 [node name="Player" parent="." instance=ExtResource("1_037x8")]
+z_index = 1
+collision_layer = 5
+collision_mask = 13
 
 [node name="Asteroids" type="Node" parent="."]
 
 [node name="Asteroid" parent="Asteroids" instance=ExtResource("2_b0cto")]
-z_index = -1
 position = Vector2(285, 137)
 
 [node name="Asteroid2" parent="Asteroids" instance=ExtResource("2_b0cto")]
-z_index = -1
 position = Vector2(947, 362)
 size = 1
 
 [node name="Asteroid3" parent="Asteroids" instance=ExtResource("2_b0cto")]
-z_index = -1
 position = Vector2(367, 477)
 size = 1
 
 [node name="Asteroid4" parent="Asteroids" instance=ExtResource("2_b0cto")]
-z_index = -1
 position = Vector2(807, 171)
 
 [node name="Asteroid5" parent="Asteroids" instance=ExtResource("2_b0cto")]
-z_index = -1
 position = Vector2(678, 547)
 size = 1
 
 [node name="Asteroid6" parent="Asteroids" instance=ExtResource("2_b0cto")]
-z_index = -1
 position = Vector2(522, 93)
 size = 2
 

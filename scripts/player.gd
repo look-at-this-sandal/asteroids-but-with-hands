@@ -1,20 +1,44 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
+
+signal died
 
 ## variable setup
 
 var cangrab = true
+var isholding = false
+var whatamiholding = 0
 
 @export var acceleration := 14.0
 @export var max_speed := 300
 @export var turn_speed := 200.0
 
 @onready var muzzle = $Muzzle
-@onready var claw_scene = preload("res://scenes/claw.tscn")
+@onready var grabraycast = $RayCast2D
 
-
+var alive = true
 
 func _process(delta):
-	pass
+	if grabraycast.is_colliding() && cangrab == true && isholding == false && Input.is_action_just_pressed("grab_throw"):
+		var areas = grabraycast.get_collider()
+		print(areas)
+		
+		if areas is Asteroid:
+			var astero = areas
+			whatamiholding = astero
+			astero.grabbing()
+			if astero.size > 0: isholding = true
+			print(astero.size)
+			
+		cangrab = false
+		print("can't grab right now")
+		await get_tree().create_timer(1.5).timeout
+		cangrab = true
+		if isholding != true: 
+			print("can grab again")
+		else: 
+			print("holding asteroid")
+		
+		
 
 func _physics_process(delta):
 	
@@ -40,3 +64,8 @@ func _physics_process(delta):
 	global_position.x = wrapf(global_position.x,0-height,screen_size.x+(height/2))
 	global_position.y = wrapf(global_position.y,0-height,screen_size.y+(height/2))
 	
+func die():
+	if alive == true:
+		alive = false
+		emit_signal("died")
+		queue_free()
