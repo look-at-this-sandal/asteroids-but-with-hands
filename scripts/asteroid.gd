@@ -1,6 +1,6 @@
 class_name Asteroid extends Area2D
 
-enum State {FLOATING, GRABBED, THROWN}
+enum State {FLOATING, GRABBED, THROWN, GRABBING}
 
 signal exploded(pos, size)
 
@@ -15,12 +15,13 @@ enum AsteroidSize{LARGE, MEDIUM, SMALL}
 @onready var cshape = $CollisionShape2D
 
 var speed = 0
+var player
 
 var grabbed = false
 
 func _ready():
 	rotation = randf_range(0, 2*PI)
-	
+	player = get_tree().get_nodes_in_group("Player")[0]
 	match size:
 		AsteroidSize.LARGE:
 			speed = randf_range(50,100)
@@ -44,8 +45,13 @@ func _physics_process(delta):
 
 ## grab size check
 	if grabbed == true && size != AsteroidSize.LARGE && state == State.FLOATING:
-		state_transition(State.FLOATING, State.GRABBED)
-		
+		state_transition(State.FLOATING, State.GRABBING)
+		## await get_tree().create_timer(1).timeout
+		reparent(player)
+		var tween = create_tween()
+		tween.tween_property(self,"position",Vector2(),0.1)
+		await tween.finished
+		state_transition(State.GRABBING, State.GRABBED)
 	elif grabbed == true && size == AsteroidSize.LARGE:
 		print("Can't be grabbed!")
 		grabbed = false
@@ -59,11 +65,16 @@ func _physics_process(delta):
 
 
 ## state machine
-	if state == State.GRABBED:
-		speed = 0
-		rotation = get_node("/root/Game/Player").rotation
-		global_position = get_node("/root/Game/Player").global_position
+	if state == State.GRABBING:
+		rotation = 0
+		pass
 		
+	elif state == State.GRABBED:
+		speed = 0
+		## rotation = get_node("/root/Game/Player").rotation   commented out for now
+		## global_position = get_node("/root/Game/Player").global_position   commented out for now
+		# add timer in code, don't change rotation and don't snap position
+		# use a tween
 		## if Input.is_action_just_pressed("grab_throw"): OLD SCRIPT!!!!
 				## throwing()
 				## state_transition(State.GRABBED, State.THROWN)
@@ -88,6 +99,7 @@ func grabbing():
 ## thrown
 func throwing():
 	grabbed = false
+	reparent(get_node("/root/Game/Asteroids"))
 	print("Asteroid thrown!")
 
 ## asteroid & player ship collision
