@@ -24,3 +24,7 @@ position = Vector2(0, -8)
 exclude_parent = false
 target_position = Vector2(0, -70)
 collide_with_areas = true
+
+[node name="AutoGrabTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true

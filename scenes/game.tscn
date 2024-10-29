@@ -36,5 +36,3 @@ size = 1
 [node name="Asteroid6" parent="Asteroids" instance=ExtResource("2_b0cto")]
 position = Vector2(522, 93)
 size = 2
-
-[node name="LasersTEMP" type="Node" parent="."]

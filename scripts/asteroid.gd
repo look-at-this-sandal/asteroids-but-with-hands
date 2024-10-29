@@ -3,7 +3,6 @@ class_name Asteroid extends Area2D
 enum State {FLOATING, GRABBED, THROWN}
 
 signal exploded(pos, size)
-signal asteroidthrown
 
 var movement_vector := Vector2(0,-1)
 var state = State.FLOATING
@@ -58,20 +57,23 @@ func _physics_process(delta):
 	global_position.x = wrapf(global_position.x,0-radius,screen_size.x+radius)
 	global_position.y = wrapf(global_position.y,0-radius,screen_size.y+radius)
 
+
+## state machine
 	if state == State.GRABBED:
 		speed = 0
 		rotation = get_node("/root/Game/Player").rotation
 		global_position = get_node("/root/Game/Player").global_position
 		
-		if Input.is_action_just_pressed("grab_throw"):
-				throwing()
-				state_transition(State.GRABBED, State.THROWN)
+		## if Input.is_action_just_pressed("grab_throw"):
+				## throwing()
+				## state_transition(State.GRABBED, State.THROWN)
 				
 			
 	elif state == State.THROWN:
-		speed = 600
-		await get_tree().create_timer(0.5).timeout
+		speed = 450
+		await get_tree().create_timer(1).timeout
 		state_transition(State.THROWN, State.FLOATING)
+		
 	elif state == State.FLOATING:
 		if speed > max_speed:
 			speed = lerpf(speed, max_speed, delta)
@@ -86,8 +88,15 @@ func grabbing():
 ## thrown
 func throwing():
 	grabbed = false
-	emit_signal("asteroidthrown")
 	print("Asteroid thrown!")
+
+func _on_area_entered(area):
+	if area is Asteroid:
+		if state == State.THROWN:
+			var a = area
+			a.explode()
+			explode()
+
 ## state machine transition
 func state_transition(prev_state: State, next_state: State) -> void:
 	state = next_state

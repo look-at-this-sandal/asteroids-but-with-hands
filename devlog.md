@@ -1,4 +1,13 @@
-2024-10-22 - 4 hr: resumed work after life factors strike again, will work again another day this week to make up for lost time
+2024-10-29 - 4 hr: resumed work once more before class with the intent of finishing up mechanic
+= pre-class work
+- got thrown asteroids to finally explode when contacting other floating asteroids after everything
+- discovered a bug with a signal relating to the throwing of asteroids that came about due to broken asteroids
+- fixed previously mentioned bug by moving throwing function code to player ship's script file
+- began work on the auto-throw mechanic with the creation of a timer node on the player ship
+- used timer node to get the auto-throw functioning, thus completing the coding for the core mechanic (without visual polish)
+- began working on player death
+
+2024-10-22 - 4 hr: resumed work after life factors strike again, wanted to work again another day this week to make up for lost time
 = pre-class work
 - began writing code to check if newly added raycast to player ship is colliding with asteroids (was successful)
 - began reworking grab function, got asteroid to follow player position when grabbed and specified that large asteroids cannot be grabbed
@@ -12,14 +21,6 @@
 
 = during and post-class work
 - engaged in playtesting
--
--
--
--
--
--
--
--
 
 2024-10-08 - 4 hr: resumed work after life factors interfered AGAIN. i'll be working more on nailing things down tomorrow
 = BLOCK 1 (pre-class work, 2 hours)

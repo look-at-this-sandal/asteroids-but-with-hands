@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var player = $Player
-@onready var laser = $LasersTEMP
 @onready var asteroids = $Asteroids
 
 
@@ -13,7 +12,7 @@ func _ready():
 	
 	for asteroid in asteroids.get_children():
 		asteroid.connect("exploded", _on_asteroid_exploded)
-		asteroid.connect("asteroidthrown", _on_asteroid_asteroidthrown)
+		## asteroid.connect("asteroidthrown", _on_asteroid_asteroidthrown)
 
 func _process(delta):
 	if Input.is_action_just_pressed("reset"):
@@ -31,11 +30,12 @@ func _on_asteroid_exploded(pos, size):
 			Asteroid.AsteroidSize.SMALL:
 				pass
 
-func _on_asteroid_asteroidthrown():
-	player.isholding = false
-	player.cangrab = false
-	await get_tree().create_timer(0.5).timeout
-	player.cangrab = true
+## func _on_asteroid_asteroidthrown():
+	## print("Asteroid Thrown signal")
+	## player.isholding = false
+	## player.cangrab = false
+	## await get_tree().create_timer(0.5).timeout
+	## player.cangrab = true
 
 func _asteroid_splitspawn(pos, size):
 	var a = asteroid_scene.instantiate()
