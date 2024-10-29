@@ -2,17 +2,20 @@ extends Node2D
 
 @onready var player = $Player
 @onready var asteroids = $Asteroids
+@onready var gameoverscreen = $UI/GameOverScreen
 
 
 var asteroid_scene = preload("res://scenes/asteroid.tscn")
 
+var score := 0
+
 func _ready():
-	
+	score = 0
 	player.connect("died", _on_player_died)
 	
 	for asteroid in asteroids.get_children():
 		asteroid.connect("exploded", _on_asteroid_exploded)
-		## asteroid.connect("asteroidthrown", _on_asteroid_asteroidthrown)
+		## asteroid.connect("asteroidthrown", _on_asteroid_asteroidthrown) OLD SCRIPT!!!!
 
 func _process(delta):
 	if Input.is_action_just_pressed("reset"):
@@ -30,7 +33,7 @@ func _on_asteroid_exploded(pos, size):
 			Asteroid.AsteroidSize.SMALL:
 				pass
 
-## func _on_asteroid_asteroidthrown():
+## func _on_asteroid_asteroidthrown(): OLD SCRIPT!!!!
 	## print("Asteroid Thrown signal")
 	## player.isholding = false
 	## player.cangrab = false
@@ -45,6 +48,5 @@ func _asteroid_splitspawn(pos, size):
 	asteroids.call_deferred("add_child", a)
 	
 func _on_player_died():
-	await get_tree().create_timer(2).timeout
-	get_tree().reload_current_scene()
-	print("Reset scene.")
+	await get_tree().create_timer(1).timeout
+	gameoverscreen.visible = true

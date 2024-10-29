@@ -64,19 +64,19 @@ func _physics_process(delta):
 		rotation = get_node("/root/Game/Player").rotation
 		global_position = get_node("/root/Game/Player").global_position
 		
-		## if Input.is_action_just_pressed("grab_throw"):
+		## if Input.is_action_just_pressed("grab_throw"): OLD SCRIPT!!!!
 				## throwing()
 				## state_transition(State.GRABBED, State.THROWN)
 				
 			
 	elif state == State.THROWN:
-		speed = 450
+		speed = 600
 		await get_tree().create_timer(1).timeout
 		state_transition(State.THROWN, State.FLOATING)
 		
 	elif state == State.FLOATING:
 		if speed > max_speed:
-			speed = lerpf(speed, max_speed, delta)
+			speed = lerpf(speed, max_speed, delta*2)
 ## explode
 func explode():
 	emit_signal("exploded", global_position, size)
@@ -90,14 +90,26 @@ func throwing():
 	grabbed = false
 	print("Asteroid thrown!")
 
+## asteroid & player ship collision
 func _on_area_entered(area):
 	if area is Asteroid:
 		if state == State.THROWN:
 			var a = area
 			a.explode()
 			explode()
+	
+
+
 
 ## state machine transition
 func state_transition(prev_state: State, next_state: State) -> void:
 	state = next_state
 	
+
+
+func _on_body_entered(body) -> void:
+	if body is Player:
+		var playership = body
+		if self.state == State.FLOATING || (self.state == State.THROWN && playership.cangrab == true):
+			print("The player has died!")
+			playership.die()

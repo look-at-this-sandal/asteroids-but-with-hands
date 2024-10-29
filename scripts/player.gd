@@ -12,13 +12,17 @@ var whatamiholding = 0
 @export var max_speed := 300
 @export var turn_speed := 200.0
 
-@onready var muzzle = $Muzzle
-@onready var grabraycast = $RayCast2D
 @onready var autothrowtimer = $AutoGrabTimer
+@onready var sprite = $Sprite2D
+@onready var cshape = $CollisionShape2D
+@onready var grabraycast = $RayCast2D
 
-var alive = true
+var alive := true
 
 func _process(delta):
+	if !alive: return
+	## grabbing and throwing
+	
 	if grabraycast.is_colliding() && cangrab == true && isholding == false && Input.is_action_just_pressed("grab_throw"):
 		var areas = grabraycast.get_collider()
 		print(areas)
@@ -41,15 +45,20 @@ func _process(delta):
 			print("holding asteroid")
 		
 	if isholding == true && cangrab == true && (Input.is_action_just_pressed("grab_throw") || autothrowtimer.is_stopped()):
-			whatamiholding.throwing()
-			whatamiholding.state_transition(1, 2)
+			if is_instance_valid(whatamiholding):
+				whatamiholding.throwing()
+				whatamiholding.state_transition(1, 2)
 			isholding = false
 			cangrab = false
 			await get_tree().create_timer(0.2).timeout
 			whatamiholding = 0
 			cangrab = true
 
+
+
 func _physics_process(delta):
+	if !alive: return
+	## movement
 	
 	var input_vector := Vector2(0, Input.get_axis("move_forward", "move_backward"))
 	
@@ -79,7 +88,9 @@ func _physics_process(delta):
 func die():
 	if alive == true:
 		alive = false
+		sprite.visible = false
+		cshape.set_deferred("disabled", true)
+		grabraycast.set_deferred("enabled", false)
 		emit_signal("died")
-		queue_free()
-		
-	
+		if isholding == true:
+			whatamiholding.explode()

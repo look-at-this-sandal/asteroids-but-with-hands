@@ -1,4 +1,4 @@
-2024-10-29 - 4 hr: resumed work once more before class with the intent of finishing up mechanic
+2024-10-29 - ~ 4 hr: resumed work once more before class with the intent of finishing up mechanic
 = pre-class work
 - got thrown asteroids to finally explode when contacting other floating asteroids after everything
 - discovered a bug with a signal relating to the throwing of asteroids that came about due to broken asteroids
@@ -6,6 +6,21 @@
 - began work on the auto-throw mechanic with the creation of a timer node on the player ship
 - used timer node to get the auto-throw functioning, thus completing the coding for the core mechanic (without visual polish)
 - began working on player death
+- discovered bug that i will either bring up to instructor or the discord "Attempt to call function 'throwing' in base 'previously freed' on a null instance.", instituted temporary fix for now using is_instance_valid
+
+= during and post-class work
+- referenced [youtube tutorial by 'Kaan Alpar'](https://www.youtube.com/watch?v=J3KZ_6aypKs) to begin implementing score and dying
+- dying function successfully implemented, only happens when player hits asteroids that are not currently being grabbed
+- added incredibly barebones game over screen, lives do not exist currently
+- found bug with asteroid calling value of player's rotation when the player dies, redid initial code for dying to account for it
+- dying now works, with grabbed asteroids exploding as the player dies.
+- with that, the fundamental coding for main mechanic of the game has been completed, and so has the handling of player death.
+- will begin with flourishes during my next work session
+- note to self as i likely work on this again this week, look into a few things: 
+	* figuring out how to count number of asteroids on screen 
+	* how sprite animations work in godot
+	* reference further tutorials to figure out how to get sound effects playing
+	* determine the art style the finished game will have
 
 2024-10-22 - 4 hr: resumed work after life factors strike again, wanted to work again another day this week to make up for lost time
 = pre-class work
