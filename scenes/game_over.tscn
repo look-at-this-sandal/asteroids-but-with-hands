@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://s5u1cpg3jxns"]
+[gd_scene load_steps=5 format=3 uid="uid://s5u1cpg3jxns"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_pb04t"]
+[ext_resource type="Theme" uid="uid://bnyt14vw3qrh2" path="res://assets/themes/cooltron.tres" id="2_h0ajw"]
+[ext_resource type="FontFile" uid="uid://cpgaa53kdqld3" path="res://assets/font/KiwiSoda.ttf" id="2_sfbub"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pnbe0"]
+font = ExtResource("2_sfbub")
+font_size = 110
 
 [node name="Game Over" type="Control"]
 layout_mode = 3
@@ -24,7 +30,9 @@ offset_right = 124.0
 offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 80
+theme = ExtResource("2_h0ajw")
+theme_override_fonts/font = ExtResource("2_sfbub")
+theme_override_font_sizes/font_size = 64
 text = "RETRY"
 
 [node name="Label" type="Label" parent="."]
@@ -42,5 +50,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 96
 text = "GAME OVER"
+label_settings = SubResource("LabelSettings_pnbe0")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

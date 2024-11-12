@@ -1,3 +1,20 @@
+2024-11-12 - 2 hr: recovering from mental health low point post-election.
+- began work on non-placeholder graphics using aseprite to create the player ship sprite and animations.
+- began work on score counter, adding [Kiwi Soda font by jeti](https://www.dafont.com/kiwisoda.font) to assets folder
+- ship's floating, grabbing, and throwing animations are completed
+- began working on score features, fleshed out explosion functions in accordance with [tutorial by 'Kaan Alpar'](https://www.youtube.com/watch?v=J3KZ_6aypKs)
+- present score function is functional and completed. kiwi soda font is used for the UI. might change font later.
+- began working on rudimentary start menu screen, referencing [youtube tutorial by Brett Makes Games](https://www.youtube.com/watch?v=RMdf60IAxY0) for scene transitions
+- game now boots into start menu rather than the game scene, pressing the "start" button transitions the player immediately into the game scene
+- note: watch [youtube tutorial by Gwizz](https://www.youtube.com/watch?v=JEQR4ALlwVU) and checking comments to look into adding a pause menu
+- note: look into figuring out how to add 'gibs' and explosion effects for both the asteroids and the ship
+- note: begin looking into how to handle endlessly spawning asteroids in accordance with how many are on screen
+
+2024-11-05 - election day, 1 hr: resumed work, mostly focusing on beginning flourishes
+- re-uploaded itch.io build to reflect 2024-10-29 build
+- added sounds folder with the intent to add dedicated sound effects later
+- 
+
 2024-10-29 - ~ 4 hr: resumed work once more before class with the intent of finishing up mechanic
 = pre-class work
 - got thrown asteroids to finally explode when contacting other floating asteroids after everything

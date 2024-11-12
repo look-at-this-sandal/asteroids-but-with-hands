@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6vbqs25uve1"]
+[gd_scene load_steps=6 format=3 uid="uid://b6vbqs25uve1"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_28ie5"]
 [ext_resource type="PackedScene" uid="uid://cjxlj8phtqa4u" path="res://scenes/player.tscn" id="1_037x8"]
 [ext_resource type="PackedScene" uid="uid://cy57485iipkun" path="res://scenes/asteroid.tscn" id="2_b0cto"]
 [ext_resource type="PackedScene" uid="uid://s5u1cpg3jxns" path="res://scenes/game_over.tscn" id="4_68ru7"]
+[ext_resource type="PackedScene" uid="uid://c1t6bgdvsl51t" path="res://scenes/hud.tscn" id="4_lxj0r"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(592, 330)
@@ -16,6 +17,8 @@ collision_mask = 13
 
 [node name="GameOverScreen" parent="UI" instance=ExtResource("4_68ru7")]
 visible = false
+
+[node name="HUD" parent="UI" instance=ExtResource("4_lxj0r")]
 
 [node name="Asteroids" type="Node" parent="."]
 

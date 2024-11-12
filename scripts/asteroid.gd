@@ -2,7 +2,7 @@ class_name Asteroid extends Area2D
 
 enum State {FLOATING, GRABBED, THROWN, GRABBING}
 
-signal exploded(pos, size)
+signal exploded(pos, size, points)
 
 var movement_vector := Vector2(0,-1)
 var state = State.FLOATING
@@ -18,6 +18,19 @@ var speed = 0
 var player
 
 var grabbed = false
+
+var points: int:
+	get:
+		match size:
+			AsteroidSize.LARGE:
+				return 100
+			AsteroidSize.MEDIUM:
+				return 50
+			AsteroidSize.SMALL:
+				return 25
+			_:
+				return 0
+
 
 func _ready():
 	rotation = randf_range(0, 2*PI)
@@ -90,7 +103,7 @@ func _physics_process(delta):
 			speed = lerpf(speed, max_speed, delta*2)
 ## explode
 func explode():
-	emit_signal("exploded", global_position, size)
+	emit_signal("exploded", global_position, size, points)
 	queue_free()
 ## grabbed
 func grabbing():
@@ -102,7 +115,7 @@ func throwing():
 	reparent(get_node("/root/Game/Asteroids"))
 	print("Asteroid thrown!")
 
-## asteroid & player ship collision
+## asteroid collision
 func _on_area_entered(area):
 	if area is Asteroid:
 		if state == State.THROWN:
@@ -111,14 +124,12 @@ func _on_area_entered(area):
 			explode()
 	
 
-
-
 ## state machine transition
 func state_transition(prev_state: State, next_state: State) -> void:
 	state = next_state
 	
 
-
+## player ship collision
 func _on_body_entered(body) -> void:
 	if body is Player:
 		var playership = body

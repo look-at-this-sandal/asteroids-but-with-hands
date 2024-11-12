@@ -2,12 +2,16 @@ extends Node2D
 
 @onready var player = $Player
 @onready var asteroids = $Asteroids
+@onready var hud = $UI/HUD
 @onready var gameoverscreen = $UI/GameOverScreen
 
 
 var asteroid_scene = preload("res://scenes/asteroid.tscn")
 
-var score := 0
+var score := 0:
+	set(value):
+		score = value
+		hud.score = score
 
 func _ready():
 	score = 0
@@ -23,7 +27,8 @@ func _process(delta):
 		print("Reset scene.")
 		
 
-func _on_asteroid_exploded(pos, size):
+func _on_asteroid_exploded(pos, size, points):
+	score += points
 	for i in range(2):
 		match size:
 			Asteroid.AsteroidSize.LARGE:

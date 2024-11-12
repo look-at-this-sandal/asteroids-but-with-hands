@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="asteroids but with HANDS"
-run/main_scene="res://scenes/game.tscn"
+config/name="GalaxyGrip"
+run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 

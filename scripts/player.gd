@@ -25,7 +25,6 @@ func _process(delta):
 	
 	if grabraycast.is_colliding() && cangrab == true && isholding == false && Input.is_action_just_pressed("grab_throw"):
 		var areas = grabraycast.get_collider()
-		print(areas)
 		
 		if areas is Asteroid:
 			var astero = areas

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1t6bgdvsl51t"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_1jp21"]
+[ext_resource type="FontFile" uid="uid://cpgaa53kdqld3" path="res://assets/font/KiwiSoda.ttf" id="2_8dqhf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wuylw"]
+font = ExtResource("2_8dqhf")
+font_size = 30
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1jp21")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 17.0
+offset_right = 546.0
+offset_bottom = 48.0
+text = "SCORE: 999999"
+label_settings = SubResource("LabelSettings_wuylw")

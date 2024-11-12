@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bnyt14vw3qrh2"]
+
+[ext_resource type="FontFile" uid="uid://cpgaa53kdqld3" path="res://assets/font/KiwiSoda.ttf" id="1_hfoxy"]
+
+[resource]
+default_font = ExtResource("1_hfoxy")
+default_font_size = 64
