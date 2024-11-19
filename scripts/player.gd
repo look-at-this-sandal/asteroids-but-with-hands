@@ -7,6 +7,7 @@ signal died
 var cangrab = true
 var isholding = false
 var whatamiholding = 0
+var vulnerable = true
 
 @export var acceleration := 14.0
 @export var max_speed := 300
@@ -18,6 +19,8 @@ var whatamiholding = 0
 @onready var grabraycast = $RayCast2D
 
 var alive := true
+
+var explod_scene = preload("res://scenes/player_ship_explosion.tscn")
 
 func _process(delta):
 	if !alive: return

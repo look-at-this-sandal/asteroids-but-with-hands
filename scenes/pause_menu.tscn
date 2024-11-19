@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://7u4hhg21ww0y"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_exl7w"]
+[ext_resource type="Theme" uid="uid://bnyt14vw3qrh2" path="res://assets/themes/cooltron.tres" id="1_p1wt2"]
+[ext_resource type="FontFile" uid="uid://cpgaa53kdqld3" path="res://assets/font/KiwiSoda.ttf" id="2_hx4vx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lg1ph"]
+font = ExtResource("2_hx4vx")
+font_size = 64
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -188.5
+offset_right = 194.0
+offset_bottom = 188.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_exl7w")
+
+[node name="MainMenu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 48.0
+offset_right = 100.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_p1wt2")
+theme_override_fonts/font = ExtResource("2_hx4vx")
+theme_override_font_sizes/font_size = 40
+text = "MAIN MENU"
+
+[node name="Resume" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -33.0
+offset_right = 100.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_p1wt2")
+theme_override_fonts/font = ExtResource("2_hx4vx")
+theme_override_font_sizes/font_size = 40
+text = "RESUME"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 84.0
+offset_right = 381.0
+offset_bottom = 148.0
+theme_override_font_sizes/font_size = 48
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_lg1ph")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]

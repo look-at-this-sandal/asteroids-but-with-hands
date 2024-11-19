@@ -1,3 +1,20 @@
+2024-11-19 - 3.5 hr: getting closer
+- began implementing pause menu referencing [youtube tutorial by Gwizz](https://www.youtube.com/watch?v=JEQR4ALlwVU)
+- added dedicated "pause" input (enter key / pause button on gamepad) that will be referenced by the pause menu
+- commented out reset function for time being, will uncomment if testing is needed
+- pause menu is fully functional, showing options to resume game and return to start menu
+- began looking into implementation of high score function based on [tutorial by CIOSAI石獅](https://www.youtube.com/watch?v=ImXWh3DSuVc
+- started work on background with stars based on [tutorial by 'Kaan Alpar'](https://www.youtube.com/watch?v=GNU5V1JVxHM)
+- created starfield background referencing tutorial through the use of a particle system.
+- found [tutorial by 16BitDev](https://www.youtube.com/watch?v=SqLVJxl7bNw) concerning particles for further detail. 
+- created player explosion particle effect based on tutorial. yet to be properly implemented with the player ship's death
+- added variable to determine if player is vulnerable or not. will use later
+- re-exported build to itch.io, now with menus and pausing all included.
+- note: ask professor about getting asteroids that are in contact with the raycast to glow but ONLY when they're in contact with the raycast
+- note: potentially look into figuring out touch screen controls for maximum compatibility
+- note: ask on the discord about how to count nodes of a specific group to make asteroid spawning system
+- note: look into implementing invulnerability until the player moves, showing controls on the screen
+
 2024-11-12 - 2 hr: recovering from mental health low point post-election.
 - began work on non-placeholder graphics using aseprite to create the player ship sprite and animations.
 - began work on score counter, adding [Kiwi Soda font by jeti](https://www.dafont.com/kiwisoda.font) to assets folder

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bower8xyh6vr6"]
+[gd_scene load_steps=4 format=3 uid="uid://bower8xyh6vr6"]
 
 [ext_resource type="Theme" uid="uid://bnyt14vw3qrh2" path="res://assets/themes/cooltron.tres" id="1_fwqft"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_xif0o"]
+[ext_resource type="PackedScene" uid="uid://bk2npbc0rukl6" path="res://scenes/starfield.tscn" id="3_br0f2"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_xif0o")
@@ -23,5 +24,8 @@ grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_fwqft")
 text = "START"
+
+[node name="Starfield" parent="." instance=ExtResource("3_br0f2")]
+position = Vector2(1199, 333)
 
 [connection signal="button_down" from="CanvasLayer/Play" to="." method="_on_play_button_down"]

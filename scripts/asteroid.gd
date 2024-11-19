@@ -80,6 +80,7 @@ func _physics_process(delta):
 ## state machine
 	if state == State.GRABBING:
 		rotation = 0
+		position = Vector2()
 		pass
 		
 	elif state == State.GRABBED:
@@ -133,6 +134,7 @@ func state_transition(prev_state: State, next_state: State) -> void:
 func _on_body_entered(body) -> void:
 	if body is Player:
 		var playership = body
-		if self.state == State.FLOATING || (self.state == State.THROWN && playership.cangrab == true):
-			print("The player has died!")
-			playership.die()
+		if self.state == State.FLOATING  || (self.state == State.THROWN && playership.cangrab == true):
+			if playership.vulnerable == true:
+				print("The player has died!")
+				playership.die()
