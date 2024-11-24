@@ -1,3 +1,14 @@
+2024-11-24 - 2.5 hr: much progress on the visuals
+- exported sprite sheet of ship from aseprite with all animations
+- switched player's Sprite2D node to an AnimatedSprite2D node for the purpose of adding animation
+- player ship's animations are configured and active in-game
+- made new graphics for large, medium, and small asteroids and implemented in game
+- began work on making graphics for asteroid and player gibs. found [tutorial by Tissue Inu](https://www.youtube.com/watch?v=PMZ7yBwleik) about sprite particles
+- asteroid particle system implemented successfully. asteroids now have gibs when they explode or split
+- found [youtube tutorial by Heartbeast](https://www.youtube.com/watch?v=pDRx2F_pY2s) concerning high scores
+- note: do i make a dedicated instructions screen in place of that invulnerability idea i had earlier? 
+- note: continue working on the infinite asteroid spawning system
+
 2024-11-19 - 3.5 hr: getting closer
 - began implementing pause menu referencing [youtube tutorial by Gwizz](https://www.youtube.com/watch?v=JEQR4ALlwVU)
 - added dedicated "pause" input (enter key / pause button on gamepad) that will be referenced by the pause menu

@@ -7,6 +7,7 @@ extends Node2D
 @onready var pause_menu = $UI/PauseMenu
 
 var asteroid_scene = preload("res://scenes/asteroid.tscn")
+var aste_expl_scene = preload("res://scenes/asteroid_explosion.tscn")
 
 var asteroid_highcount = 5
 
@@ -39,6 +40,9 @@ func pauseMenu():
 	else: pause_menu.visible = false
 
 func _on_asteroid_exploded(pos, size, points):
+	var explod_a = aste_expl_scene.instantiate()
+	add_child(explod_a)
+	explod_a.global_position = pos
 	score += points
 	for i in range(2):
 		match size:

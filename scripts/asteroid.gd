@@ -39,17 +39,17 @@ func _ready():
 		AsteroidSize.LARGE:
 			speed = randf_range(50,100)
 			max_speed = 100
-			sprite.texture = preload("res://assets/sprites/spr_placeholder_asteroid_big.png")
+			sprite.texture = preload("res://assets/sprites/spr_asteroid_big.png")
 			cshape.shape = preload("res://resources/asteroid_cshape_big.tres")
 		AsteroidSize.MEDIUM:
 			speed = randf_range(75,125)
 			max_speed = 125
-			sprite.texture = preload("res://assets/sprites/spr_placeholder_asteroid_medium.png")
+			sprite.texture = preload("res://assets/sprites/spr_asteroid_medium.png")
 			cshape.shape = preload("res://resources/asteroid_cshape_medium.tres")
 		AsteroidSize.SMALL:
 			speed = randf_range(100,150)
 			max_speed = 150
-			sprite.texture = preload("res://assets/sprites/spr_placeholder_asteroid_small.png")
+			sprite.texture = preload("res://assets/sprites/spr_asteroid_small.png")
 			cshape.shape = preload("res://resources/asteroid_cshape_small.tres")
 	
 

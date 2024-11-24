@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://7gc70h6hvfpu"]
+
+[ext_resource type="Script" path="res://scripts/asteroid_explosion.gd" id="1_4m1t8"]
+[ext_resource type="Texture2D" uid="uid://b5hq4h8516hke" path="res://assets/sprites/spr_asteroid_gib.png" id="1_elsna"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s57l5"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_msjrc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.868954, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_px6jq"]
+curve = SubResource("Curve_msjrc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8t4lg"]
+particle_flag_disable_z = true
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 80.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 0, 0)
+damping_min = 100.0
+damping_max = 100.0
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_px6jq")
+anim_offset_max = 1.0
+
+[node name="AsteroidExplosion" type="Node2D"]
+script = ExtResource("1_4m1t8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_s57l5")
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_8t4lg")
+texture = ExtResource("1_elsna")
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+autostart = true

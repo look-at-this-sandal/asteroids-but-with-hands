@@ -14,7 +14,7 @@ var vulnerable = true
 @export var turn_speed := 200.0
 
 @onready var autothrowtimer = $AutoGrabTimer
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 @onready var cshape = $CollisionShape2D
 @onready var grabraycast = $RayCast2D
 
@@ -33,8 +33,9 @@ func _process(delta):
 			var astero = areas
 			whatamiholding = astero
 			astero.grabbing()
-			if astero.size > 0: isholding = true
-			
+			if astero.size > 0: 
+				isholding = true
+				sprite.play("grabbing")
 			
 		cangrab = false
 		print("can't grab right now")
@@ -52,11 +53,13 @@ func _process(delta):
 				whatamiholding.state_transition(1, 2)
 			isholding = false
 			cangrab = false
+			sprite.play("throw")
 			await get_tree().create_timer(0.2).timeout
 			whatamiholding = 0
 			cangrab = true
 
-
+func _on_animated_sprite_2d_animation_finished():
+	if sprite.animation == "throw": sprite.play("default")
 
 func _physics_process(delta):
 	if !alive: return
