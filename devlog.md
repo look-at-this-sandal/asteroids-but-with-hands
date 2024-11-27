@@ -1,3 +1,9 @@
+2024-11-26 - .5 hr: little details
+- fixed a very tiny bug with the grabbed state on the asteroid
+- added a title to the titlescreen
+- demo'd build in front of class
+- re-uploaded build to github
+
 2024-11-24 - 2.5 hr: much progress on the visuals
 - exported sprite sheet of ship from aseprite with all animations
 - switched player's Sprite2D node to an AnimatedSprite2D node for the purpose of adding animation

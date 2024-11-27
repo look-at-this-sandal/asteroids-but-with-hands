@@ -23,6 +23,9 @@ func _ready():
 	for asteroid in asteroids.get_children():
 		asteroid.connect("exploded", _on_asteroid_exploded)
 		## asteroid.connect("asteroidthrown", _on_asteroid_asteroidthrown) OLD SCRIPT!!!!
+	
+	var asteroidgroup = get_tree().get_nodes_in_group("Asteroids")
+	print(asteroidgroup)
 
 func _process(delta):
 	## if Input.is_action_just_pressed("reset"):

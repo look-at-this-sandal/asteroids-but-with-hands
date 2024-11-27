@@ -33,6 +33,7 @@ var points: int:
 
 
 func _ready():
+	add_to_group("Asteroids")
 	rotation = randf_range(0, 2*PI)
 	player = get_tree().get_nodes_in_group("Player")[0]
 	match size:
@@ -80,10 +81,10 @@ func _physics_process(delta):
 ## state machine
 	if state == State.GRABBING:
 		rotation = 0
-		position = Vector2()
 		pass
 		
 	elif state == State.GRABBED:
+		position = Vector2()
 		speed = 0
 		## rotation = get_node("/root/Game/Player").rotation   commented out for now
 		## global_position = get_node("/root/Game/Player").global_position   commented out for now

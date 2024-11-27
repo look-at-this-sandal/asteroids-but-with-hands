@@ -27,25 +27,25 @@ visible = false
 
 [node name="Asteroids" type="Node" parent="."]
 
-[node name="Asteroid" parent="Asteroids" instance=ExtResource("2_b0cto")]
+[node name="Asteroid" parent="Asteroids" groups=["Asteroids"] instance=ExtResource("2_b0cto")]
 position = Vector2(285, 137)
 
-[node name="Asteroid2" parent="Asteroids" instance=ExtResource("2_b0cto")]
+[node name="Asteroid2" parent="Asteroids" groups=["Asteroids"] instance=ExtResource("2_b0cto")]
 position = Vector2(947, 362)
 size = 1
 
-[node name="Asteroid3" parent="Asteroids" instance=ExtResource("2_b0cto")]
+[node name="Asteroid3" parent="Asteroids" groups=["Asteroids"] instance=ExtResource("2_b0cto")]
 position = Vector2(367, 477)
 size = 1
 
-[node name="Asteroid4" parent="Asteroids" instance=ExtResource("2_b0cto")]
+[node name="Asteroid4" parent="Asteroids" groups=["Asteroids"] instance=ExtResource("2_b0cto")]
 position = Vector2(807, 171)
 
-[node name="Asteroid5" parent="Asteroids" instance=ExtResource("2_b0cto")]
+[node name="Asteroid5" parent="Asteroids" groups=["Asteroids"] instance=ExtResource("2_b0cto")]
 position = Vector2(678, 547)
 size = 1
 
-[node name="Asteroid6" parent="Asteroids" instance=ExtResource("2_b0cto")]
+[node name="Asteroid6" parent="Asteroids" groups=["Asteroids"] instance=ExtResource("2_b0cto")]
 position = Vector2(522, 93)
 size = 2
 
