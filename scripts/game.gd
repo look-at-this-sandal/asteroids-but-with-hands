@@ -95,6 +95,7 @@ func _asteroid_splitspawn(pos, size):
 func _on_player_died():
 	diesound.play()
 	await get_tree().create_timer(1).timeout
+	gameoverscreen.score = SaveLoad.highscore
 	gameoverscreen.visible = true
 
 func _spawn_wave():
