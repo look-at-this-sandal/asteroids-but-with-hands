@@ -129,7 +129,7 @@ debug_color = Color(0.934631, 1.74233e-05, 0.639752, 0.42)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 exclude_parent = false
-target_position = Vector2(0, -70)
+target_position = Vector2(0, -80)
 collide_with_areas = true
 
 [node name="AutoGrabTimer" type="Timer" parent="."]

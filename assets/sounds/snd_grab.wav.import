@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://7wampokta2nw"
-path="res://.godot/imported/snd_throw.wav-c5dfb86dd71ce694891838b539a95a03.sample"
+uid="uid://bil7adtlur03d"
+path="res://.godot/imported/snd_grab.wav-3a2659739a0fccf65c7b595544d89566.sample"
 
 [deps]
 
-source_file="res://assets/sounds/snd_throw.wav"
-dest_files=["res://.godot/imported/snd_throw.wav-c5dfb86dd71ce694891838b539a95a03.sample"]
+source_file="res://assets/sounds/snd_grab.wav"
+dest_files=["res://.godot/imported/snd_grab.wav-3a2659739a0fccf65c7b595544d89566.sample"]
 
 [params]
 

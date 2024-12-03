@@ -13,7 +13,12 @@ config_version=5
 config/name="GalaxyGrip"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0.0370791, 0.0370791, 0.037079, 1)
 config/icon="res://icon.svg"
+
+[autoload]
+
+SaveLoad="*res://scripts/save_load.gd"
 
 [display]
 
@@ -79,4 +84,4 @@ pause={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.0687982, 0.0687983, 0.0687982, 1)
+environment/defaults/default_clear_color=Color(0.039731, 0.039731, 0.039731, 1)

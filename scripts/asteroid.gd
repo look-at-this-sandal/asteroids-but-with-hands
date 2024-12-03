@@ -1,6 +1,6 @@
 class_name Asteroid extends Area2D
 
-enum State {FLOATING, GRABBED, THROWN, GRABBING}
+enum State {FLOATING, GRABBED, THROWN, GRABBING, SPAWNING}
 
 signal exploded(pos, size, points)
 
@@ -18,16 +18,17 @@ var speed = 0
 var player
 
 var grabbed = false
+var highlighted = false
 
 var points: int:
 	get:
 		match size:
 			AsteroidSize.LARGE:
-				return 100
+				return 25
 			AsteroidSize.MEDIUM:
 				return 50
 			AsteroidSize.SMALL:
-				return 25
+				return 75
 			_:
 				return 0
 
@@ -52,6 +53,8 @@ func _ready():
 			max_speed = 150
 			sprite.texture = preload("res://assets/sprites/spr_asteroid_small.png")
 			cshape.shape = preload("res://resources/asteroid_cshape_small.tres")
+	
+	player.highlight.connect(_set_highlight)
 	
 
 func _physics_process(delta):
@@ -79,7 +82,15 @@ func _physics_process(delta):
 
 
 ## state machine
-	if state == State.GRABBING:
+	if state == State.SPAWNING:
+		sprite.self_modulate.a = 0.5
+		if ((global_position.x < screen_size.x-radius) || (global_position.x > 0+radius)) || (global_position.y < screen_size.y-radius) || (global_position.y > 0+radius):
+			await get_tree().create_timer(1.5).timeout
+			sprite.self_modulate.a = 1
+			state_transition(State.SPAWNING, State.FLOATING)
+		
+	elif state == State.GRABBING:
+		sprite.self_modulate = Color(1,1,1)
 		rotation = 0
 		pass
 		
@@ -103,6 +114,11 @@ func _physics_process(delta):
 	elif state == State.FLOATING:
 		if speed > max_speed:
 			speed = lerpf(speed, max_speed, delta*2)
+		if size != AsteroidSize.LARGE && player.alive == true:
+			if highlighted: sprite.self_modulate = Color(2,2,2)
+			else: sprite.self_modulate = Color(1,1,1)
+		
+		
 ## explode
 func explode():
 	emit_signal("exploded", global_position, size, points)
@@ -135,7 +151,11 @@ func state_transition(prev_state: State, next_state: State) -> void:
 func _on_body_entered(body) -> void:
 	if body is Player:
 		var playership = body
-		if self.state == State.FLOATING  || (self.state == State.THROWN && playership.cangrab == true):
+		if (self.state == State.FLOATING && grabbed == false)  || (self.state == State.THROWN && playership.cangrab == true):
 			if playership.vulnerable == true:
 				print("The player has died!")
 				playership.die()
+	sprite.self_modulate = Color(1,1,1)
+
+func _set_highlight(object):
+	highlighted = self == object

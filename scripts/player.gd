@@ -2,6 +2,8 @@ class_name Player extends CharacterBody2D
 
 signal died
 
+signal highlight
+
 ## variable setup
 
 var cangrab = true
@@ -17,6 +19,9 @@ var vulnerable = true
 @onready var sprite = $AnimatedSprite2D
 @onready var cshape = $CollisionShape2D
 @onready var grabraycast = $RayCast2D
+@onready var grabsound = $"../GrabSound"
+@onready var throwsound = $"../ThrowSound"
+@onready var movesound = $"../ThrusterSound"
 
 var alive := true
 
@@ -26,26 +31,30 @@ func _process(delta):
 	if !alive: return
 	## grabbing and throwing
 	
-	if grabraycast.is_colliding() && cangrab == true && isholding == false && Input.is_action_just_pressed("grab_throw"):
+	if grabraycast.is_colliding() && cangrab == true && isholding == false:
 		var areas = grabraycast.get_collider()
-		
-		if areas is Asteroid:
-			var astero = areas
-			whatamiholding = astero
-			astero.grabbing()
-			if astero.size > 0: 
-				isholding = true
-				sprite.play("grabbing")
+		if alive: highlight.emit(areas)
+		if Input.is_action_just_pressed("grab_throw"):
+			if areas is Asteroid:
+				var astero = areas
+				whatamiholding = astero
+				astero.grabbing()
+				if astero.size > 0 && astero.state == 0: 
+					isholding = true
+					sprite.play("grabbing")
+					grabsound.play()
 			
-		cangrab = false
-		print("can't grab right now")
-		await get_tree().create_timer(1.5).timeout
-		if isholding == true: autothrowtimer.start()
-		cangrab = true
-		if isholding != true: 
-			print("can grab again")
-		else: 
-			print("holding asteroid")
+			cangrab = false
+			print("can't grab right now")
+			await get_tree().create_timer(1.5).timeout
+			if isholding == true: autothrowtimer.start()
+			cangrab = true
+			if isholding != true: 
+				print("can grab again")
+			else: 
+				print("holding asteroid")
+		
+	else: highlight.emit(null)
 		
 	if isholding == true && cangrab == true && (Input.is_action_just_pressed("grab_throw") || autothrowtimer.is_stopped()):
 			if is_instance_valid(whatamiholding):
@@ -54,6 +63,7 @@ func _process(delta):
 			isholding = false
 			cangrab = false
 			sprite.play("throw")
+			throwsound.play()
 			await get_tree().create_timer(0.2).timeout
 			whatamiholding = 0
 			cangrab = true
@@ -78,6 +88,11 @@ func _physics_process(delta):
 	if input_vector.y == 0:
 		velocity = velocity.move_toward(Vector2.ZERO, 5)
 	
+	if (Input.is_action_pressed("move_forward") ||Input.is_action_pressed("move_backward")) && alive:
+		if not movesound.is_playing():
+			movesound.play()
+	else: movesound.stop()
+	
 	move_and_slide()
 	
 	## screen wrap
@@ -96,6 +111,11 @@ func die():
 		sprite.visible = false
 		cshape.set_deferred("disabled", true)
 		grabraycast.set_deferred("enabled", false)
+		var explod_p = explod_scene.instantiate()
 		emit_signal("died")
+		add_child(explod_p)
 		if isholding == true:
 			whatamiholding.explode()
+			isholding = false
+			cangrab = false
+		if movesound.is_playing(): movesound.stop()

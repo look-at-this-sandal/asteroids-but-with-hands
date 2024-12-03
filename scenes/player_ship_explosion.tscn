@@ -1,35 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://cix7bg2oygwmj"]
+[gd_scene load_steps=7 format=3 uid="uid://cix7bg2oygwmj"]
 
 [ext_resource type="Script" path="res://scripts/player_ship_explosion.gd" id="1_l636a"]
+[ext_resource type="Texture2D" uid="uid://buekrdsajud1r" path="res://assets/sprites/spr_ship_gibs.png" id="2_i6ekc"]
 
-[sub_resource type="Curve" id="Curve_hx1dt"]
-_data = [Vector2(0, 1), 0.0, -0.579451, 0, 0, Vector2(0.864238, 0), -2.18456, 0.0, 0, 0]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w83g3"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_3h1dm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.868954, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_bhsle"]
-curve = SubResource("Curve_hx1dt")
+[sub_resource type="CurveTexture" id="CurveTexture_px6jq"]
+curve = SubResource("Curve_3h1dm")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ffmf5"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dhdrl"]
 particle_flag_disable_z = true
 spread = 180.0
-initial_velocity_min = 50.0
-initial_velocity_max = 75.0
+flatness = 1.0
+initial_velocity_min = 70.0
+initial_velocity_max = 70.0
 gravity = Vector3(0, 0, 0)
-damping_min = 85.211
-damping_max = 85.211
-scale_min = 2.0
-scale_max = 8.0
-scale_curve = SubResource("CurveTexture_bhsle")
+damping_min = 10.0
+damping_max = 10.0
+scale_curve = SubResource("CurveTexture_px6jq")
+anim_offset_max = 1.0
 
-[node name="PlayerShipExplosion" type="GPUParticles2D"]
-emitting = false
-amount = 16
-process_material = SubResource("ParticleProcessMaterial_ffmf5")
-one_shot = true
-explosiveness = 1.0
+[node name="PlayerShipExplosion" type="Node2D"]
 script = ExtResource("1_l636a")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_w83g3")
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_dhdrl")
+texture = ExtResource("2_i6ekc")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+
 [node name="Timer" type="Timer" parent="."]
+wait_time = 5.2
 one_shot = true
 autostart = true
 

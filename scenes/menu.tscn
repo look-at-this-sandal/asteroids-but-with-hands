@@ -1,13 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bower8xyh6vr6"]
+[gd_scene load_steps=5 format=3 uid="uid://bower8xyh6vr6"]
 
 [ext_resource type="Theme" uid="uid://bnyt14vw3qrh2" path="res://assets/themes/cooltron.tres" id="1_fwqft"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_xif0o"]
 [ext_resource type="PackedScene" uid="uid://bk2npbc0rukl6" path="res://scenes/starfield.tscn" id="3_br0f2"]
-[ext_resource type="FontFile" uid="uid://cpgaa53kdqld3" path="res://assets/font/KiwiSoda.ttf" id="3_yt1jd"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_bai08"]
-font = ExtResource("3_yt1jd")
-font_size = 110
+[ext_resource type="Texture2D" uid="uid://d1687sgb604r3" path="res://assets/sprites/spr_logo.png" id="3_ihgmm"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_xif0o")
@@ -21,32 +17,68 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -121.5
-offset_top = 6.0
+offset_top = -3.0
 offset_right = 121.5
-offset_bottom = 124.0
+offset_bottom = 115.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_fwqft")
 text = "START"
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Instructions" type="Button" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -275.5
-offset_top = -133.0
-offset_right = 275.5
-offset_bottom = -1.0
+offset_left = -121.0
+offset_top = 129.0
+offset_right = 122.0
+offset_bottom = 247.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 96
-text = "GALAXY GRIP"
-label_settings = SubResource("LabelSettings_bai08")
+size_flags_horizontal = 4
+theme = ExtResource("1_fwqft")
+theme_override_font_sizes/font_size = 34
+text = "INSTRUCTIONS"
+
+[node name="Name" type="Label" parent="CanvasLayer"]
+offset_left = 1003.0
+offset_top = 618.0
+offset_right = 1138.0
+offset_bottom = 641.0
+theme = ExtResource("1_fwqft")
+theme_override_font_sizes/font_size = 16
+text = "2024 JOAN LINDSAY"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 404.0
+offset_top = 38.0
+offset_right = 744.0
+offset_bottom = 244.0
+texture = ExtResource("3_ihgmm")
+
+[node name="HighScoreTitle" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -59.0
+offset_right = 99.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fwqft")
+theme_override_font_sizes/font_size = 24
+text = "HIGH SCORE: 999999"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Starfield" parent="." instance=ExtResource("3_br0f2")]
 position = Vector2(1199, 333)
 
 [connection signal="button_down" from="CanvasLayer/Play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="CanvasLayer/Instructions" to="." method="_on_instructions_button_down"]

@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwa80kj67mb8w"]
+
+[ext_resource type="Script" path="res://scripts/instructions.gd" id="1_jx0p4"]
+[ext_resource type="PackedScene" uid="uid://bk2npbc0rukl6" path="res://scenes/starfield.tscn" id="1_xon33"]
+[ext_resource type="FontFile" uid="uid://cpgaa53kdqld3" path="res://assets/font/KiwiSoda.ttf" id="2_obe2k"]
+[ext_resource type="Theme" uid="uid://bnyt14vw3qrh2" path="res://assets/themes/cooltron.tres" id="4_cuqvl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8lt0f"]
+font = ExtResource("2_obe2k")
+font_size = 110
+
+[node name="Instructions" type="Node2D"]
+script = ExtResource("1_jx0p4")
+
+[node name="Starfield" parent="." instance=ExtResource("1_xon33")]
+position = Vector2(1199, 333)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 230.0
+offset_top = 28.0
+offset_right = 904.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 96
+text = "INSTRUCTIONS"
+label_settings = SubResource("LabelSettings_8lt0f")
+
+[node name="MainMenu" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 450.0
+offset_top = 528.0
+offset_right = 677.0
+offset_bottom = 606.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_cuqvl")
+theme_override_font_sizes/font_size = 40
+text = "MAIN MENU"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 136.0
+offset_right = 1121.0
+offset_bottom = 505.0
+theme = ExtResource("4_cuqvl")
+theme_override_font_sizes/font_size = 36
+text = "USE THE ARROW KEYS, WASD KEYS, OR D-PAD (ON JOYPAD) TO MOVE YOUR SHIP.
+WHEN IN RANGE OF A SMALL OR MEDIUM SIZED ASTEROID (IF IT GLOWS), PRESS THE SPACE KEY OR A BUTTON TO GRAB IT. 
+AFTER THREE SECONDS, OR PRESSING THE A BUTTON / SPACE KEY AGAIN, YOU CAN THROW AN ASTEROID. 
+PRESS ENTER OR START TO PAUSE THE GAME.
+
+TRY TO SURVIVE AS LONG AS YOU CAN!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]

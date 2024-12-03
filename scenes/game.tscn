@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6vbqs25uve1"]
+[gd_scene load_steps=13 format=3 uid="uid://b6vbqs25uve1"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_28ie5"]
 [ext_resource type="PackedScene" uid="uid://cjxlj8phtqa4u" path="res://scenes/player.tscn" id="1_037x8"]
@@ -7,6 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://c1t6bgdvsl51t" path="res://scenes/hud.tscn" id="4_lxj0r"]
 [ext_resource type="PackedScene" uid="uid://7u4hhg21ww0y" path="res://scenes/pause_menu.tscn" id="5_gxnoc"]
 [ext_resource type="PackedScene" uid="uid://bk2npbc0rukl6" path="res://scenes/starfield.tscn" id="7_micc5"]
+[ext_resource type="AudioStream" uid="uid://bil7adtlur03d" path="res://assets/sounds/snd_grab.wav" id="8_ho3ge"]
+[ext_resource type="AudioStream" uid="uid://7wampokta2nw" path="res://assets/sounds/snd_throw.wav" id="9_haqsf"]
+[ext_resource type="AudioStream" uid="uid://q57dvet8cfm6" path="res://assets/sounds/snd_rockexplode.wav" id="10_an13j"]
+[ext_resource type="AudioStream" uid="uid://b31vtsa4laiv7" path="res://assets/sounds/snd_shipthruster.wav" id="10_gmg4a"]
+[ext_resource type="AudioStream" uid="uid://bjg6brsxmsoi7" path="res://assets/sounds/snd_playershipdie.wav" id="11_snxgf"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(592, 330)
@@ -50,3 +55,23 @@ position = Vector2(522, 93)
 size = 2
 
 [node name="Starfield" parent="." instance=ExtResource("7_micc5")]
+
+[node name="GrabSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ho3ge")
+volume_db = -4.0
+max_polyphony = 2
+
+[node name="ThrowSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_haqsf")
+volume_db = -2.0
+max_polyphony = 2
+
+[node name="ThrusterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_gmg4a")
+volume_db = -2.0
+
+[node name="AsteBreakSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_an13j")
+
+[node name="PlayerDieSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_snxgf")

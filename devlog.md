@@ -1,3 +1,41 @@
+2024-12-2 - 6 hr /: crunchtime before demo day
+-- session 1, 4 hr --
+- restored player vulnerability (previously disabled for bugtesting purposes)
+- began work on high score system referencing [youtube tutorial by Heartbeast](https://www.youtube.com/watch?v=pDRx2F_pY2s)
+- began work on highlighting interactable asteroids with raycast for clarity's sake. seemingly implemented successfully with minimal bugs
+- added instructions screen accessible from main menu and option to return to main menu on game over screen
+- made 'grab' sound effect and added it into game referencing [tutorial by Kaan Alpar](https://www.youtube.com/watch?v=ZFed23kZMMk)
+- made 'throw' and 'asteroid explosion' sounds and added them referencing previous tutorial
+- made and added player death sound
+- added name to title screen
+-- session 2, 2 hr --
+- add player ship explosion referencing asteroid explosion code
+- added ship thruster sound that only plays when moving forward or backward
+- added unique logo graphic to main menu
+- referenced [tutorial by CIOSAI石獅](https://www.youtube.com/watch?v=ImXWh3DSuVc) for high score function.
+- high score successfully implemented and displayed in the game over screen AND title screen
+- re-exported build for itch.io
+- pushed build to github
+
+2024-12-1 - 2.5 hr: pre-demo day work, was interrupted
+-- quick 30min session before being occupied with family matters --
+- figured out how to determine the count of the 'asteroids' group, allowing for me to begin work on the respawn system
+- debated adding particle system to asteroid node
+-- returned home after external events, 2 hours --
+- discovered bug with grabbing & holding asteroids that've been thrown already, implemented a fix
+- ironed out other bug regarding dying to grabbed asteroids
+- added new spawning state for asteroid state machine that cannot be grabbed nor harm the player. added alpha filter to make it slightly transparent
+- made array in game.gd that contains the list of sizes of the asteroids first on screen
+- began implementing infinite asteroid spawner
+- buffed raycast on player ship by 10 pixels
+- 6 asteroids now spawn in at a random point beyond the screen in the spawning state with sizes being based on an array.
+- fixed small bug with asteroid spawn system regarding explosions of asteroids
+- adjusted scores for each asteroid size
+- made sprites for gibs for player ship
+- note: reference linked tutorials for high score system
+- note: add more sound effects and additional details to the background
+- note: add instructions screen
+
 2024-11-26 - .5 hr: little details
 - fixed a very tiny bug with the grabbed state on the asteroid
 - added a title to the titlescreen
@@ -20,7 +58,7 @@
 - added dedicated "pause" input (enter key / pause button on gamepad) that will be referenced by the pause menu
 - commented out reset function for time being, will uncomment if testing is needed
 - pause menu is fully functional, showing options to resume game and return to start menu
-- began looking into implementation of high score function based on [tutorial by CIOSAI石獅](https://www.youtube.com/watch?v=ImXWh3DSuVc
+- began looking into implementation of high score function based on [tutorial by CIOSAI石獅](https://www.youtube.com/watch?v=ImXWh3DSuVc)
 - started work on background with stars based on [tutorial by 'Kaan Alpar'](https://www.youtube.com/watch?v=GNU5V1JVxHM)
 - created starfield background referencing tutorial through the use of a particle system.
 - found [tutorial by 16BitDev](https://www.youtube.com/watch?v=SqLVJxl7bNw) concerning particles for further detail. 
